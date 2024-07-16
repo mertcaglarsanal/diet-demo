@@ -11,23 +11,25 @@ import java.util.logging.Level;
 
 @RestController
 @RequestMapping("/api/meals")
+
+
 public class Controller {
     private final Logger log = LoggerFactory.getLogger(DietDemoApplication.class);
     //Logger logger = Logger.getLogger(DietDemoApplication.class.getName());
     private final MealRepository mealRepository;
 
-    public Controller(MealRepository mealRepository) {
-        this.mealRepository = mealRepository;
-    }
+        public Controller(MealRepository mealRepository) {
+            this.mealRepository = mealRepository;
+        }
 
-    @GetMapping
+   @GetMapping
     public List<Meal> getAllMeals() {
-      log.info("levo123");
+      log.info("sdsds");
         return mealRepository.findAll();
-    }
+   }
 
     @GetMapping("/{id}")
-    public Meal getMealById(@PathVariable Long id) {
+   public Meal getMealById(@PathVariable Long id) {
         return mealRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Meal not found with id: " + id));
     }
@@ -35,19 +37,19 @@ public class Controller {
     @PostMapping()
     public void createMeal(@RequestBody Meal meal) {
         mealRepository.create(meal);
-    }
+   }
 
     @PutMapping("/{id}")
-    public void updateMeal(@PathVariable Long id, @RequestBody Meal updatedMeal) {
+   public void updateMeal(@PathVariable Long id, @RequestBody Meal updatedMeal) {
         // Ensure the id in updatedMeal matches the path variable id
         if (!updatedMeal.id().equals(id)) {
             throw new RuntimeException("Id mismatch");
-        }
-        mealRepository.update(updatedMeal);
-    }
+       }
+       mealRepository.update(updatedMeal);
+   }
 
-    @DeleteMapping("/{id}")
+  @DeleteMapping("/{id}")
     public void deleteMeal(@PathVariable Long id) {
         mealRepository.delete(id);
-    }
+  }
 }

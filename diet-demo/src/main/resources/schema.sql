@@ -1,0 +1,9 @@
+CREATE TABLE IF NOT EXISTS meal (
+    id SERIAL PRIMARY KEY,
+    date TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    meal_type VARCHAR(50) NOT NULL CHECK (meal_type IN ('BREAKFAST', 'LUNCH', 'SNACK', 'DINNER')),
+    calories INT NOT NULL,
+    protein INT NOT NULL,
+    carbs INT NOT NULL,
+    fat INT NOT NULL
+);

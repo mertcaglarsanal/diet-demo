@@ -1,0 +1,9 @@
+services:
+  postgres:
+    image: 'postgres:latest'
+    environment:
+      - 'POSTGRES_DB=diet-demo'
+      - 'POSTGRES_PASSWORD=password'
+      - 'POSTGRES_USER=mert'
+    ports:
+      - '5432:5432'
